@@ -1,0 +1,116 @@
+TASK/PROJECT:
+Design a simple calculator with basic arithmetic operations.
+Prompt the user to input two numbers and an operation choice.
+Perform the calculation and display the result.
+
+
+
+PROGRAM(CODE):
+#Alias names of n1 and n2 are x and y respectively.
+def addition(x, y):
+    return x + y
+def subtraction(x, y):
+    return x - y
+def multiplication(x, y):
+    return x * y
+def division(x, y):
+    if y == 0:
+        return "Error! Division by zero."
+    return x / y
+
+def main():
+    print("Simple Calculator")
+    
+    while True:
+        try:
+            #n1 = number 1 and n2 = number 2
+            n1 = float(input("\nEnter the first number: ").strip())
+            n2 = float(input("\nEnter the second number: ").strip())
+        except ValueError:
+            print("\nInvalid input. Please enter numeric values.\n")
+            continue
+        
+        print("\nChoose an operation:")
+        print("1. Addition (+)")
+        print("2. Subtraction (-)")
+        print("3. Multiplication (*)")
+        print("4. Division (/)")
+        
+        operator = input("Enter the number corresponding to the operation: ").strip()
+        
+        if operator == '1':
+            result = addition(n1, n2)
+            print(f"\nResult: {n1} + {n2} = {result}\n")
+        elif operator == '2':
+            result = subtraction(n1, n2)
+            print(f"\nResult: {n1} - {n2} = {result}\n")
+        elif operator == '3':
+            result = multiplication(n1, n2)
+            print(f"\nResult: {n1} * {n2} = {result}\n")
+        elif operator == '4':
+            result = division(n1, n2)
+            print(f"\nResult: {n1} / {n2} = {result}\n")
+        else:
+            print("Invalid operation choice. Please select a valid option.\n")
+            continue
+        
+        n = input("Do you want to continue performing calculation? (Y/N): ").strip().lower()
+        #here n refers continuation of calculator
+        if n != 'y':
+            print("Thank you...")
+            break
+
+if __name__ == "__main__":
+    main()
+
+
+
+OUTPUT:
+Simple Calculator
+Enter the first number: 5
+Enter the second number: 3
+Choose an operation:
+1. Addition (+)
+2. Subtraction (-)
+3. Multiplication (*)
+4. Division (/)
+Enter the number corresponding to the operation: 2
+Result: 5.0 - 3.0 = 2.0
+
+Do you want to continue performing calculation? (Y/N): y
+
+Enter the first number: 5
+Enter the second number: 2
+Choose an operation:
+1. Addition (+)
+2. Subtraction (-)
+3. Multiplication (*)
+4. Division (/)
+Enter the number corresponding to the operation: 1
+Result: 5.0 + 2.0 = 7.0
+
+Do you want to continue performing calculation? (Y/N): Y
+
+Enter the first number: 6
+Enter the second number: 2
+Choose an operation:
+1. Addition (+)
+2. Subtraction (-)
+3. Multiplication (*)
+4. Division (/)
+Enter the number corresponding to the operation: 4
+Result: 6.0 / 2.0 = 3.0
+
+Do you want to continue performing calculation? (Y/N): y
+
+Enter the first number: 87
+Enter the second number: 23.56
+Choose an operation:
+1. Addition (+)
+2. Subtraction (-)
+3. Multiplication (*)
+4. Division (/)
+Enter the number corresponding to the operation: 2
+Result: 87.0 - 23.56 = 63.44
+Do you want to continue performing calculation? (Y/N): n
+Thank you...
