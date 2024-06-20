@@ -1,0 +1,112 @@
+TASK/PROJECT:
+Rock-Paper-Scissors Game
+User Input: Prompt the user to choose rock, paper, or scissors.
+Computer Selection: Generate a random choice (rock, paper, or scissors) for the computer.
+Game Logic: Determine the winner based on the user's choice and the computer's choice.
+Rock beats scissors, scissors beat paper, and paper beats rock.
+Display Result: Show the user's choice and the computer's choice.
+Display the result, whether the user wins, loses, or it's a tie.
+Score Tracking (Optional): Keep track of the user's and computer's scores for multiple rounds.
+Play Again: Ask the user if they want to play another round.
+User Interface: Design a user-friendly interface with clear instructions and feedback.
+
+
+PROGRAM(CODE):
+import random
+
+def computers():
+    options = ["rock", "paper", "scissors"]
+    return random.choice(options)
+
+def result(user, computer):
+    if user == computer:
+        return "tie"
+    elif (user == "rock" and computer == "scissors") or (user == "scissors" and computer == "paper") or  (user == "paper" and computer == "rock"):
+        return "user"
+    else:
+        return "computer"
+
+def instructions():
+    print("Welcome to Rock-Paper-Scissors\n")
+    print("Instructions:")
+    print("1. Enter 'rock', 'paper', or 'scissors' to play.")
+    print("2. Enter 'Q' or 'q' to exit the game.")
+    print("3. The game will display the computer's selection and user selection.")
+    print("4. Result will be displayed after each round.")
+
+def main():
+    instructions()
+    us = 0
+    cs = 0
+    #us : user score and cs : computer score
+    
+    while True:
+        computer = computers()
+        user = input("\nEnter your choice (rock, paper, or scissors): ").strip().lower()
+        
+        if user == 'q':
+            print("Thank you for playing! \nFinal Result:")
+            print(f"\tPlayer(you): {us}, Computer: {cs}")
+            break
+        
+        if user not in ["rock", "paper", "scissors"]:
+            print("Invalid choice. Please enter 'rock', 'paper', or 'scissors'.")
+            continue
+        
+        print(f"\nComputer's selection: {computer}")
+        print(f"User's selection: {user}")
+        
+        winner = result(user, computer)
+        
+        if winner == "user":
+            print("Congratulations! player(you) win this round,")
+            us += 1
+        elif winner == "computer":
+            print("Computer wins this round.")
+            cs += 1
+        else:
+            print("This round is a tie!")
+        
+        print(f"\nCurrent Result: Player(you) = {us}, Computer = {cs}")
+        
+        next_round = input("\nDo you want to play another round? (Y/N): ").strip().lower()
+        if next_round != 'y':
+            print("Thank you for playing! \nFinal Result:")
+            print(f"\tPlayer(you): {us}, Computer: {cs}")
+            break
+
+if __name__ == "__main__":
+    main()
+
+
+OUTPUT:
+Welcome to Rock-Paper-Scissors
+
+Instructions:
+1. Enter 'rock', 'paper', or 'scissors' to play.
+2. Enter 'Q' or 'q' to exit the game.
+3. The game will display the computer's selection and user selection.
+4. Result will be displayed after each round.
+
+Enter your choice (rock, paper, or scissors): rock
+
+Computer's selection: paper
+User's selection: rock
+Computer wins this round.
+
+Current Result: Player(you) = 0, Computer = 1
+
+Do you want to play another round? (Y/N): y
+
+Enter your choice (rock, paper, or scissors): paper
+
+Computer's selection: rock
+User's selection: paper
+Congratulations! player(you) win this round,
+
+Current Result: Player(you) = 1, Computer = 1
+
+Do you want to play another round? (Y/N): n
+Thank you for playing! 
+Final Result:
+	Player(you): 1, Computer: 1
